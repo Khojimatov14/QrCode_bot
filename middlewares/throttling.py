@@ -1,6 +1,6 @@
 # import time
 # from aiogram import BaseMiddleware, types
-from aiogram.dispatcher.event.handler import HandlerObject
+# from aiogram.dispatcher.event.handler import HandlerObject
 #
 #
 # class ThrottlingMiddleware(BaseMiddleware):
