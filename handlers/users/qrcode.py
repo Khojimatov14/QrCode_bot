@@ -1,10 +1,10 @@
-from keyboards import wifi_keyboard
 from loader import dp
 from aiogram import F
+from utils import send_qrcode
 from states import UserStates
+from keyboards import wifi_keyboard
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Message, CallbackQuery
-from utils import send_qrcode
 
 # Text
 @dp.callback_query(F.data == "text", UserStates.select_type)
