@@ -25,3 +25,4 @@ async def bot_start(message: types.Message):
     await message.answer(text="Assalomu alekum\n\nAgar sizga Telegram bot yaratish hizmati kerak bo'lsa menga yozing! "
                               "Yoki qo'ng'iroq qiling!\n\nTelegram: @khojimatov14\n+998 90-626-66-44")
 
+
