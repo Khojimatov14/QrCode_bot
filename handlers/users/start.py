@@ -18,6 +18,7 @@ async def settings(call: CallbackQuery, state: FSMContext):
     await call.message.delete_reply_markup()
     await call.message.answer(text="Sizga qanday QrCode kerak?", reply_markup=main_keyboard)
     await state.set_state(UserStates.select_type)
+    await call.answer()
 
 
 @dp.message(Command("bot"))

@@ -11,6 +11,7 @@ from aiogram.types import Message, CallbackQuery
 async def text_qrcode(call: CallbackQuery, state: FSMContext):
     await call.message.edit_text("Textni kiriting...")
     await state.set_state(UserStates.text)
+    await call.answer()
 
 
 @dp.message(UserStates.text)
@@ -23,6 +24,7 @@ async def text_qrcode2(message: Message):
 async def link_qrcode(call: CallbackQuery, state: FSMContext):
     await call.message.edit_text("Linkni kiriting...")
     await state.set_state(UserStates.link)
+    await call.answer()
 
 
 @dp.message(UserStates.link)
@@ -35,6 +37,7 @@ async def link_qrcode2(message: Message):
 async def wifi_qrcode(call: CallbackQuery, state: FSMContext):
     await call.message.edit_text(text="Himoya turini tanlang!", reply_markup=wifi_keyboard)
     await state.set_state(UserStates.wifi_type)
+    await call.answer()
 
 
 @dp.callback_query(UserStates.wifi_type)
@@ -42,6 +45,7 @@ async def wifi_qrcode2(call: CallbackQuery, state: FSMContext):
     await state.update_data(wifi_type=call.data)
     await call.message.edit_text(text="Wi-Fi nomini kiriting...")
     await state.set_state(UserStates.wifi_name)
+    await call.answer()
 
 
 @dp.message(UserStates.wifi_name)
@@ -65,6 +69,7 @@ async def wifi_qrcode4(message: Message, state: FSMContext):
 async def call_qrcode(call: CallbackQuery, state: FSMContext):
     await call.message.edit_text("Telefon raqamni kiriting...")
     await state.set_state(UserStates.call)
+    await call.answer()
 
 
 @dp.message(UserStates.call)
@@ -77,6 +82,7 @@ async def call_qrcode2(message: Message):
 async def email_qrcode(call: CallbackQuery, state: FSMContext):
     await call.message.edit_text("Email manzilini kiriting...")
     await state.set_state(UserStates.email_address)
+    await call.answer()
 
 
 @dp.message(UserStates.email_address)
@@ -107,6 +113,7 @@ async def email_qrcode4(message: Message, state: FSMContext):
 async def sms_qrcode(call: CallbackQuery, state: FSMContext):
     await call.message.edit_text("Telefon raqamni kiriting...")
     await state.set_state(UserStates.sms_number)
+    await call.answer()
 
 
 @dp.message(UserStates.sms_number)
