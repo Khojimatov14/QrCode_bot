@@ -11,9 +11,7 @@ async def send_qrcode(qrcode_text, user_id):
     photo_path = f"utils/qrcodes/{user_id}.png"
     img = qrcode.make(data=qrcode_text, border=1, box_size=50)
     img.save(photo_path)
-    # await asyncio.sleep(2)
     await bot.send_photo(chat_id=user_id, photo=FSInputFile(path=photo_path), reply_markup=refresh_keyboard)
-    # await asyncio.sleep(2)
     try:
         os.remove(path=photo_path)
     except FileNotFoundError as error:
