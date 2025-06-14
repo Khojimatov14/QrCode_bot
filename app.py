@@ -9,7 +9,7 @@ from utils.notify_admins import on_startup_notify
 from utils.set_bot_commands import set_default_commands
 from aiogram.webhook.aiohttp_server import SimpleRequestHandler, setup_application
 
-RAILWAY_DOMAIN = "https://qrcode_bot.up.railway.app"
+RAILWAY_DOMAIN = "https://qrcodebot-production.up.railway.app"
 WEBHOOK_PATH = "/webhook"
 WEBHOOK_URL = f"{RAILWAY_DOMAIN}{WEBHOOK_PATH}"
 
