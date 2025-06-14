@@ -1,10 +1,9 @@
-import asyncio
 import os
 import qrcode
-from keyboards import refresh_keyboard
 from loader import bot
 from data.config import ADMINS
 from aiogram.types import FSInputFile
+from keyboards import refresh_keyboard
 
 
 async def send_qrcode(qrcode_text, user_id):
