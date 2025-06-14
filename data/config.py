@@ -4,7 +4,7 @@ from environs import Env
 env = Env()
 env.read_env()
 
-if os.getenv("RAILWAY_ENVIRONMENT") is None:  # faqat lokalda ishlasa
+if os.getenv("production") is None:
     env.read_env()
 
 BOT_TOKEN = env.str("BOT_TOKEN")
