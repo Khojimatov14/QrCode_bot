@@ -1,8 +1,7 @@
 from aiogram import types
-from loader import bot
 
 
-async def set_default_commands():
+async def set_default_commands(bot):
     await bot.set_my_commands(
         [
             types.BotCommand(command='start', description='Botni ishga tushurish')
