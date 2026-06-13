@@ -7,7 +7,7 @@ import middlewares, filters, handlers
 from middlewares import ThrottlingMiddleware
 from utils.notify_admins import on_startup_notify
 from utils.set_bot_commands import set_default_commands
-from data.config import WEBAPP_HOST, WEBAPP_PORT, WEBHOOK_URL
+from data.config import WEBAPP_HOST, WEBAPP_PORT, WEBHOOK_URL, WEBHOOK_PATH
 from aiogram.webhook.aiohttp_server import SimpleRequestHandler, setup_application
 
 
@@ -35,7 +35,7 @@ async def main():
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, stream=sys.stdout)
-    web.run_app(main(), host=WEBAPP_HOST, port=WEBAPP_PORT)
+    web.run_app(main(), host="0.0.0.0", port=8081)
 
 
 # POLLING
