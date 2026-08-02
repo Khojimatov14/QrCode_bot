@@ -1,17 +1,19 @@
-import os
+import io
+import asyncio
 import qrcode
 from loader import bot
-from data.config import ADMINS
-from aiogram.types import FSInputFile
+from aiogram.types import BufferedInputFile
 from keyboards import refresh_keyboard
 
 
+def _generate_qr_bytes(qrcode_text: str) -> bytes:
+    img_buf = io.BytesIO()
+    img = qrcode.make(data=qrcode_text, border=2, box_size=10)
+    img.save(img_buf, format="PNG")
+    return img_buf.getvalue()
+
+
 async def send_qrcode(qrcode_text, user_id):
-    photo_path = f"utils/qrcodes/{user_id}.png"
-    img = qrcode.make(data=qrcode_text, border=1, box_size=50)
-    img.save(photo_path)
-    await bot.send_photo(chat_id=user_id, photo=FSInputFile(path=photo_path), reply_markup=refresh_keyboard)
-    try:
-        os.remove(path=photo_path)
-    except FileNotFoundError as error:
-        await bot.send_message(chat_id=ADMINS[0], text=f"Faylni o'chirishda hatolik yuz berdi!\n\n{error}")
+    photo_bytes = await asyncio.to_thread(_generate_qr_bytes, qrcode_text)
+    photo = BufferedInputFile(file=photo_bytes, filename=f"qrcode_{user_id}.png")
+    await bot.send_photo(chat_id=user_id, photo=photo, reply_markup=refresh_keyboard)
