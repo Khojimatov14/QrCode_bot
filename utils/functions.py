@@ -8,7 +8,7 @@ from keyboards import refresh_keyboard
 
 def _generate_qr_bytes(qrcode_text: str) -> bytes:
     img_buf = io.BytesIO()
-    img = qrcode.make(data=qrcode_text, border=2, box_size=10)
+    img = qrcode.make(data=qrcode_text, border=2, box_size=30)
     img.save(img_buf, format="PNG")
     return img_buf.getvalue()
 
