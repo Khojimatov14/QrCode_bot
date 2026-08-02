@@ -11,7 +11,7 @@ from utils.notify_admins import on_startup_notify
 from utils.set_bot_commands import set_default_commands
 
 # Environment sozlamalari
-WEBHOOK_PATH = os.getenv("WEBHOOK_PATH", "/webhook")
+WEBHOOK_PATH = "/webhook"
 WEBHOOK_HOST = os.getenv("WEBHOOK_HOST", "").rstrip("/")
 WEBHOOK_URL = os.getenv("WEBHOOK_URL", "")
 
